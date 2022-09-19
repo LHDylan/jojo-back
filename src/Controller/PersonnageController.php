@@ -22,9 +22,14 @@ class PersonnageController extends AbstractController
         return $this->json([
             $personnages
         ]);
+    }
 
-        // $personnages = $personnageRepository->findAllpersonnages();
-        // return new JsonResponse($personnages, 200);
+    #[Route('/:id', name: 'app_personnage_show', methods: ['GET'])]
+    public function show(Personnage $personnage): JsonResponse
+    {
+        return $this->json([
+            $personnage
+        ]);
     }
 
     #[Route('/new', name: 'app_personnage_new', methods: ['POST'])]
