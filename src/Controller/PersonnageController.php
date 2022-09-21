@@ -20,9 +20,10 @@ class PersonnageController extends AbstractController
     {
         $personnages = $personnageRepository->findAll();
 
-        return $this->json([
-            'personnages' => $personnages
-        ]);
+        return $this->json(
+            // 'personnages' => $personnages
+            $personnages
+        );
     }
 
     #[Route('/{id}', name: 'app_personnage_show', methods: ['GET'])]
@@ -45,7 +46,7 @@ class PersonnageController extends AbstractController
         return new JsonResponse($data, Response::HTTP_OK);
     }
 
-    #[Route('/', name: 'app_personnage_new', methods: ['POST'])]
+    #[Route('', name: 'app_personnage_new', methods: ['POST'])]
     public function new(Request $request, SerializerInterface $serializer, PersonnageRepository $personnageRepository): JsonResponse
     {
 
@@ -82,9 +83,9 @@ class PersonnageController extends AbstractController
 
         // return new JsonResponse($personnage, Response::HTTP_OK);
 
-        return $this->json([
-            'personnage' => $personnage
-        ]);
+        return $this->json(
+            $personnage
+        );
     }
 
     #[Route('/{id}', name: 'app_personnage_delete', methods: ['DELETE'])]
